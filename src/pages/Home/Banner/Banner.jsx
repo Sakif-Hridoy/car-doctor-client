@@ -14,6 +14,16 @@ const Banner = props => {
             <div className="carousel w-full">
   <div id="slide1" className="carousel-item relative w-full">
     <img src={img1} className="w-full" />
+    <div className="absolute flex transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <div className='text-white'>
+      <h2 className="text-6xl">Affordable Price For Car Servicing</h2>
+      <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+      <div>
+      <button className='btn btn-primary'>Discover More</button>
+      <button className='btn btn-outline btn-secondary'>Latest Project</button>
+      </div>
+      </div>
+    </div>
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href="#slide4" className="btn btn-circle">❮</a> 
       <a href="#slide2" className="btn btn-circle">❯</a>
