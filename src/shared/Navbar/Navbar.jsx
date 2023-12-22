@@ -23,6 +23,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/myCart">My Cart</NavLink>
       </li>
+      <li>
+        <NavLink to="/bookings">Bookings</NavLink>
+      </li>
     </>
   );
 
@@ -30,7 +33,7 @@ const Navbar = () => {
     <div className="navbar bg-base-100 sticky top-0 z-30">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn text-white btn text-white-ghost lg:hidden">
+          <label tabIndex={0} className="btn text-white text-white-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
