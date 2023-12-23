@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const BookingRow = ({booking}) => {
+const BookingRow = ({booking,handleDelete}) => {
     const {_id,customerName,email,date,service,price} = booking;
+  
 
-    const handleDelete = id =>{
-        const proceed = confirm('Are you sure?')
-
-        
-    }
+    
 
     return (
         <tr>
