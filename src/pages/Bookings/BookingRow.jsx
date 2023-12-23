@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const BookingRow = ({booking,handleDelete}) => {
-    const {_id,customerName,email,date,service,price} = booking;
+const BookingRow = ({booking,handleDelete,handleBookingConfirm}) => {
+    const {_id,customerName,email,date,service,price,status} = booking;
   
 
     
@@ -30,7 +30,7 @@ const BookingRow = ({booking,handleDelete}) => {
         <td>{email}</td>
         <td>{price}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          {status === 'confirm'? <h2 className='font-bold text-blue-800'>Confirmed</h2> : <button onClick={()=>handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Confirm</button>}
         </th>
       </tr>
     );
