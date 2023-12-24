@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProviders";
-
-
+import axios from "axios";
 
 const Login = () => {
-  const {user,signIn, googleSignIn,setUser } = useContext(AuthContext);
+  const { auth,user, signIn, googleSignIn, setUser } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -15,30 +14,43 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
       // console.log(result)
-      navigate(location.state ? location.state : "/");
+      // navigate(location.state ? location.state : "/");
+      const user = { auth };
+
+        axios.post('http://localhost:5000/jwt',user)
+        .then(res=>{
+          console.log(res.data)
+        })
     });
   };
 
   const handleLogin = (e) => {
     // console.log(e);
-    e.preventDefault()
+    e.preventDefault();
     const form = new FormData(e.currentTarget);
     // access form datas using formdata
-    const email = form.get("email")
-    const password = form.get("password")
-    
-    console.log(email,password)
-    console.log(email,password)
+    const email = form.get("email");
+    const password = form.get("password");
 
-    signIn(email,password)
-    .then(result=>{
-      console.log(result.user)
-      setUser(user)
-      navigate(location.state ? location.state : '/')
-    })
-    .catch(error=>{
-      error.message
-    })
+    console.log(email, password);
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        // const user = { email };
+
+        // axios.post('http://localhost:5000/jwt',user)
+        // .then(res=>{
+        //   console.log(res.data)
+        // })
+
+        setUser(user);
+        // navigate(location?.state ? location?.state : '/')
+      })
+      .catch((error) => {
+        error.message;
+      });
   };
 
   return (
