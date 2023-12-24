@@ -15,12 +15,12 @@ const Login = () => {
     googleSignIn().then((result) => {
       // console.log(result)
       // navigate(location.state ? location.state : "/");
-      const user = { auth };
+      // const user = { auth };
 
-        axios.post('http://localhost:5000/jwt',user)
-        .then(res=>{
-          console.log(res.data)
-        })
+      //   axios.post('http://localhost:5000/jwt',user)
+      //   .then(res=>{
+      //     console.log(res.data.auth.currentUser.email)
+      //   })
     });
   };
 
@@ -38,15 +38,20 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-        // const user = { email };
+        const user = { email };
 
-        // axios.post('http://localhost:5000/jwt',user)
-        // .then(res=>{
-        //   console.log(res.data)
-        // })
+        axios.post('http://localhost:5000/jwt',user,{
+          withCredentials:true
+        })
+        .then(res=>{
+          console.log(res.data)
+          if(res.data.success){
+            navigate(location?.state ? location?.state : '/')
+          }
+        })
 
         setUser(user);
-        // navigate(location?.state ? location?.state : '/')
+       
       })
       .catch((error) => {
         error.message;

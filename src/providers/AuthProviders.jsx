@@ -36,8 +36,9 @@ const AuthProviders = ({children}) => {
 
     const signIn = (email,password)=>{
       setLoading(true)
-  
+      console.log(email,password)
       return signInWithEmailAndPassword(auth,email,password);
+    
     }
 
     const logOut = ()=>{
